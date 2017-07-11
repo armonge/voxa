@@ -1,0 +1,147 @@
+{
+  "version": "1.0",
+  "session": {
+    "new": false,
+    "sessionId": "amzn1.echo-api.session.63cb7a6a-70cc-4269-9b47-7a71ddb4650d",
+    "application": {
+      "applicationId": "amzn1.ask.skill.a39153a7-565d-49e9-8919-f59b5237d66e"
+    },
+    "attributes": {
+      "modelData": {
+        "user": {
+          "game": {
+            "gameType": "math",
+            "highScore": 0,
+            "currentScore": 0,
+            "gameLevel": "easy",
+            "locale": "en-US",
+            "gameMode": "simple",
+            "questionNumber": 0
+          },
+          "userId": "amzn1.ask.account.AGIT3HN55TWWAFA4WA3TBKM5NCDAU5SHAVP2KECFSNF64IM3VK6Y4LNFKBZHBF7Q7XQ7XSUVOK4WEFI35S6DY4T3SEF6E6CECJPGA37KK3VUAMCEPBT3ROGW5BKJWRP46Y5OAFTM5GUUD3UU4UASA4NYI3JYMRIHD3JT6AHQG5VXSDHMWHEG7LG27JKKAKPPNAWQWFQCE6KDXLY",
+          "accessToken": null
+        },
+        "game": {
+          "gameType": "math",
+          "highScore": 0,
+          "currentScore": 0,
+          "gameLevel": "easy",
+          "locale": "en-US",
+          "gameMode": "simple",
+          "questionNumber": 0
+        }
+      },
+      "state": "hearGameExplanation?",
+      "reply": {
+        "reply": "Welcome.Launch",
+        "to": "hearGameExplanation?"
+      }
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AGIT3HN55TWWAFA4WA3TBKM5NCDAU5SHAVP2KECFSNF64IM3VK6Y4LNFKBZHBF7Q7XQ7XSUVOK4WEFI35S6DY4T3SEF6E6CECJPGA37KK3VUAMCEPBT3ROGW5BKJWRP46Y5OAFTM5GUUD3UU4UASA4NYI3JYMRIHD3JT6AHQG5VXSDHMWHEG7LG27JKKAKPPNAWQWFQCE6KDXLY"
+    }
+  },
+  "context": {
+    "AudioPlayer": {
+      "playerActivity": "IDLE"
+    },
+    "System": {
+      "application": {
+        "applicationId": "amzn1.ask.skill.a39153a7-565d-49e9-8919-f59b5237d66e"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.AGIT3HN55TWWAFA4WA3TBKM5NCDAU5SHAVP2KECFSNF64IM3VK6Y4LNFKBZHBF7Q7XQ7XSUVOK4WEFI35S6DY4T3SEF6E6CECJPGA37KK3VUAMCEPBT3ROGW5BKJWRP46Y5OAFTM5GUUD3UU4UASA4NYI3JYMRIHD3JT6AHQG5VXSDHMWHEG7LG27JKKAKPPNAWQWFQCE6KDXLY"
+      },
+      "device": {
+        "deviceId": "amzn1.ask.device.AHVZX3QPXRPE3YQ6WFDHVGVD4OG4ZKQZ52FFKXA46YWXI34DDG5MSNFIGCNKKIILDIYY6HLVSCA32H7IX4OH4VCCCK7MVFLPAT5ZR3WA6FS2TZLJ4KLLJQ3YQ5OY7P6UWQ7B2OJQ7N2PDVUE2XCHQMWFFSLQ",
+        "supportedInterfaces": {
+          "AudioPlayer": {
+
+          }
+        }
+      },
+      "apiEndpoint": "https://api.amazonalexa.com"
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "amzn1.echo-api.request.7c6d572c-0558-4a34-a846-7200cb1ceb3a",
+    "timestamp": "2017-07-11T03:30:42Z",
+    "locale": "en-US",
+    "intent": {
+      "name": "SettingsIntent",
+      "confirmationStatus": "NONE",
+      "slots": {
+        "gameLevel": {
+          "name": "gameLevel",
+          "value": "easy",
+          "resolutions": {
+            "resolutionsPerAuthority": [
+              {
+                "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a39153a7-565d-49e9-8919-f59b5237d66e.LIST_OF_GAME_LEVELS",
+                "status": {
+                  "code": "ER_SUCCESS_MATCH"
+                },
+                "values": [
+                  {
+                    "value": {
+                      "name": "beginner",
+                      "id": "beginner"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "confirmationStatus": "NONE"
+        },
+        "gameType": {
+          "name": "gameType",
+          "value": "math",
+          "resolutions": {
+            "resolutionsPerAuthority": [
+              {
+                "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a39153a7-565d-49e9-8919-f59b5237d66e.LIST_OF_GAME_TYPES",
+                "status": {
+                  "code": "ER_SUCCESS_MATCH"
+                },
+                "values": [
+                  {
+                    "value": {
+                      "name": "arithmetic",
+                      "id": "arithmetic"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "confirmationStatus": "NONE"
+        },
+        "gameMode": {
+          "name": "gameMode",
+          "value": "simple",
+          "resolutions": {
+            "resolutionsPerAuthority": [
+              {
+                "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a39153a7-565d-49e9-8919-f59b5237d66e.LIST_OF_GAME_MODES",
+                "status": {
+                  "code": "ER_SUCCESS_MATCH"
+                },
+                "values": [
+                  {
+                    "value": {
+                      "name": "simple",
+                      "id": "8dbdda48fb8748d6746f1965824e966a"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "confirmationStatus": "NONE"
+        }
+      }
+    }
+  }
+}

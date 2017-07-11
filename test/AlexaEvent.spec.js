@@ -33,4 +33,13 @@ describe('AlexaEvent', () => {
     });
     expect(alexaEvent.session.attributes).to.deep.equal({});
   });
+
+  it('should set intent params to the resolutions', () => {
+    const alexaEvent = new AlexaEvent(require('./requests/slots-with-resolutions.json'));
+    expect(alexaEvent.intent.params).to.deep.equal({
+      gameLevel: 'beginner',
+      gameType: 'arithmetic',
+      gameMode: 'simple',
+    });
+  });
 });
