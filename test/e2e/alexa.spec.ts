@@ -22,6 +22,7 @@
 
 import { expect } from "chai";
 import { SkillResponse, VirtualAlexa } from "virtual-alexa";
+import { alexaLambdaHandler } from "../../hello-world/hello-world";
 
 /* tslint:disable-next-line:no-var-requires */
 const views = require("../../hello-world/views.json");
@@ -31,7 +32,7 @@ describe("Hello World Alexa", () => {
 
   beforeEach(() => {
     alexa = VirtualAlexa.Builder()
-      .handler("hello-world/hello-world.alexaLambdaHandler") // Lambda function file and name
+      .handler(alexaLambdaHandler) // Lambda function file and name
       .interactionModelFile("hello-world/alexa-model.json")
       .create();
   });
@@ -39,7 +40,7 @@ describe("Hello World Alexa", () => {
   it("Runs the alexa skill and like's voxa", async () => {
     let reply = await alexa.launch();
     expect(reply.response.outputSpeech.ssml).to.include(
-      "Welcome to this voxa app, are you enjoying voxa so far?",
+      views.en.translation.launch,
     );
 
     reply = (await alexa.utter("yes")) as SkillResponse;
@@ -51,7 +52,7 @@ describe("Hello World Alexa", () => {
   it("Runs the alexa skill and does not like voxa", async () => {
     let reply = await alexa.launch();
     expect(reply.response.outputSpeech.ssml).to.include(
-      "Welcome to this voxa app, are you enjoying voxa so far?",
+      views.en.translation.launch,
     );
 
     reply = (await alexa.utter("no")) as SkillResponse;

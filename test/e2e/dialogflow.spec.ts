@@ -55,7 +55,7 @@ describe("Hello World Google Assistant", () => {
   it("Runs the dialogFlowAction and like's voxa", async () => {
     let reply = await googleAssistant.launch();
     expect(reply.fulfillmentText).to.include(
-      "Welcome to this voxa app, are you enjoying voxa so far?",
+      views.en.translation.launch,
     );
 
     reply = await googleAssistant.utter("yes");
@@ -65,7 +65,7 @@ describe("Hello World Google Assistant", () => {
   it("Runs the dialogFlowAction and does not like voxa", async () => {
     let reply = await googleAssistant.launch();
     expect(reply.fulfillmentText).to.include(
-      "Welcome to this voxa app, are you enjoying voxa so far?",
+      views.en.translation.launch,
     );
 
     reply = await googleAssistant.utter("no");

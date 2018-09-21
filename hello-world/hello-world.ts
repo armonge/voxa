@@ -20,32 +20,41 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-require("source-map-support").install();
+import { MemoryBotStorage } from "botbuilder";
+
 let voxa;
+
 try {
+  /* tslint:disable-next-line:no-var-requires */
   voxa = require("voxa");
-} catch (err) {
+} catch (error) {
+  /* tslint:disable-next-line:no-var-requires */
   voxa = require("../src");
 }
 
-const VoxaApp = voxa.VoxaApp;
-const DialogFlowPlatform = voxa.DialogFlowPlatform;
-const AlexaPlatform = voxa.AlexaPlatform;
+const {
+  AlexaPlatform,
+  BotFrameworkPlatform,
+  DialogFlowPlatform,
+  IVoxaIntent,
+  VoxaApp,
+} = voxa;
 
+/* tslint:disable-next-line:no-var-requires */
 const views = require("./views.json");
 
 const app = new VoxaApp({ views });
 app.onIntent("input.welcome", {
-  to: "LaunchIntent"
+  to: "LaunchIntent",
 });
 
 app.onIntent("LaunchIntent", {
   ask: "launch",
+  flow: "yield",
   to: "likesVoxa?",
-  flow: "yield"
 });
 
-app.onState("likesVoxa?", request => {
+app.onState("likesVoxa?", (request: any) => {
   if (!request.intent) {
     throw new Error("Not an intent request");
   }
@@ -59,15 +68,41 @@ app.onState("likesVoxa?", request => {
   }
 });
 
-const alexaSkill = new AlexaPlatform(app);
+export const alexaSkill = new AlexaPlatform(app);
 
-const dialogFlowAction = new DialogFlowPlatform(app);
+export const dialogFlowAction = new DialogFlowPlatform(app);
 
-module.exports = {
-  alexaSkill,
-  alexaLambdaHandler: alexaSkill.lambda(),
-  alexaLambdaHTTPHandler: alexaSkill.lambdaHTTP(),
-  dialogFlowAction: dialogFlowAction,
-  dialogFlowActionLambdaHandler: dialogFlowAction.lambda(),
-  dialogFlowActionLambdaHTTPHandler: dialogFlowAction.lambdaHTTP()
-};
+async function recognize(msg: any): Promise<any> {
+  if (!msg.text) {
+    return;
+  }
+
+  if (msg.text === "yes") {
+    return {
+      name: "YesIntent",
+      params: {},
+      rawIntent: {},
+    };
+  }
+
+  if (msg.text === "no") {
+    return {
+      name: "NoIntent",
+      params: {},
+      rawIntent: {},
+    };
+  }
+
+  throw new Error("Didn't recognize");
+}
+
+export const botFrameworkSkill = new BotFrameworkPlatform(app, {
+  defaultLocale: "en",
+  recognize,
+  storage: new MemoryBotStorage(),
+});
+
+export const alexaLambdaHTTPHandler = alexaSkill.lambdaHTTP();
+export const alexaLambdaHandler = alexaSkill.lambda();
+export const dialogFlowActionLambdaHTTPHandler = dialogFlowAction.lambdaHTTP();
+export const dialogFlowActionLambdaHandler = dialogFlowAction.lambda();

@@ -12,6 +12,7 @@ import {
   IMessage,
 } from "botbuilder";
 import * as debug from "debug";
+import { IDirectiveClass } from "../../directives";
 import { VoxaApp } from "../../VoxaApp";
 import { IVoxaIntent } from "../../VoxaEvent";
 import { VoxaPlatform } from "../VoxaPlatform";
@@ -145,7 +146,7 @@ export class BotFrameworkPlatform extends VoxaPlatform {
     return {};
   }
 
-  protected getDirectiveHandlers() {
+  protected getDirectiveHandlers(): IDirectiveClass[] {
     return [
       HeroCard,
       SuggestedActions,

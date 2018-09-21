@@ -18,6 +18,7 @@ fi
   cd hello-world
   rm -rf node_modules
   yarn
+  npx tsc hello-world.ts --lib ES2015
   yarn mocha hello-world.spec.js
 )
 

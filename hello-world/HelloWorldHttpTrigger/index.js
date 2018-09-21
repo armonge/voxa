@@ -20,5 +20,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+require("ts-node").register();
+
 const { alexaSkill } = require("../hello-world");
 module.exports = alexaSkill.azureFunction();
